@@ -1,3 +1,12 @@
+# Performer
+
+Obsidian plugin that interprets a note with AI and rewrites its structure.
+
+- **What is this:** an Obsidian plugin in TypeScript, built with esbuild, plus a companion server.
+- **What it does:** enriches the frontmatter and restructures the note content.
+- **Why:** notes stay readable without manual reformatting.
+- **How to use:** install the plugin into a vault. `manifest.json` and the sections below have the details.
+
 ## 📸 Preview
 
 <div align="center">
