@@ -7,7 +7,7 @@ Obsidian plugin that interprets a note with AI and rewrites its structure.
 - **What it is:** an Obsidian plugin in TypeScript, built with esbuild, that calls OpenRouter.
 - **What it does:** reads a note and rewrites it — frontmatter properties filled in, body restructured by a template you choose — so a rough draft becomes a record you can search later.
 - **What it needs:** Obsidian 1.4 or newer, the BRAT plugin to install it, and an OpenRouter key.
-- **How do I start:** install BRAT, add this repository as a beta plugin, enable Performer, then paste the key in its settings.
+- **How do I start:** install BRAT, then add `https://github.com/iliFalk/Performer-Obsidian` as a beta plugin; enable Performer and paste your key.
 
 ## Install
 
