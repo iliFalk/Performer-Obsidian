@@ -2,48 +2,39 @@
 
 Obsidian plugin that interprets a note with AI and rewrites its structure.
 
-- **What is this:** an Obsidian plugin in TypeScript, built with esbuild, plus a companion server.
-- **What it does:** enriches the frontmatter and restructures the note content.
-- **Why:** notes stay readable without manual reformatting.
-- **How to use:** install the plugin into a vault. `manifest.json` and the sections below have the details.
+![The Performer overlay working on a note](./assets/performer-workflow-banner.png)
 
-## 📸 Preview
+- **What it is:** an Obsidian plugin in TypeScript, built with esbuild, that calls OpenRouter.
+- **What it does:** reads a note and rewrites it — frontmatter properties filled in, body restructured by a template you choose — so a rough draft becomes a record you can search later.
+- **What it needs:** Obsidian 1.4 or newer, the BRAT plugin to install it, and an OpenRouter key.
+- **How do I start:** install BRAT, add this repository as a beta plugin, enable Performer, then paste the key in its settings.
 
-<div align="center">
+## Install
 
-<img src="./assets/performer-workflow-banner.png" width="1200" height="475" alt="Performer Plugin Workflow" />
+1. Install **BRAT** from Obsidian's community plugins.
+2. In BRAT settings press **Add beta plugin** and paste `https://github.com/iliFalk/Performer-Obsidian`.
+3. Enable **Performer** in the community plugin list.
+4. Open Performer's settings and paste your OpenRouter key.
 
-</div>
+## Use
 
----
+1. Open any note and press the **Performer** ribbon icon, or run the command from the palette.
+2. Pick a template — Meeting, Book, or one you wrote yourself — and press **PERFORM**.
+3. Check the properties and the restructured body, change what is wrong, then press **Update Note**.
 
-# 🔍 Performer
+Before and after, on the same three lines:
 
-**The magnifier for your thoughts.**
-
-Performer is a digital "loupe" for Obsidian that clarifies, structures, and enriches your notes for a better Personal Knowledge Base. It doesn't just change your notes; it helps you see the structure that was already there, but hidden.
-
----
-
-## ✨ The Idea
-
-Transform chaotic drafts into structured knowledge in seconds.
-
-### Before
 ```markdown
 meeting with Sarah today about the solar project.
 we talked about the panels and the deadline is next friday.
 sarah says we need more cables.
 ```
 
-### After
 ```markdown
 ---
 title: Solar Project - Panel Logistics & Deadlines
-date: 2025-05-23
 participants: Sarah
 type: meeting
-tags: project
 ---
 
 ## Discussion
@@ -54,75 +45,17 @@ tags: project
 - [ ] Order additional cables (Requested by Sarah).
 ```
 
----
+## Settings
 
-## 🛠️ How it Works
+| Setting | Meaning |
+|---|---|
+| OpenRouter key | the key every run is billed to; it stays in the plugin's data file |
+| Model | which model performs the note — Gemini, GPT or Claude |
+| Templates | the prompts behind each performance: note name, frontmatter fields, body shape |
 
-Performer is designed to be a fluid, high-performance overlay that stays out of your way until you need it.
+A template is three prompts: one names the note, one fills each property, one shapes the body.
 
-1.  **Trigger the Loupe:** While in any note, tap the **"Open Performer"/Ribbon icon** (or use the command palette). The Performer overlay slides in naturally.
-2.  **Choose Your Performance:** Select a pre-built template (like "Meeting" or "Book") from the main menu and hit **PERFORM**.
-3.  **Refine & Save:** Watch as the AI populates properties and suggests a restructured body. Tweak any field manually if needed, then hit **Update Note**.
+## Docs
 
-### 🪄 One-Tap Magic
-Once your templates are set, the friction disappears. Open a note, select your template, and click one button to transform your messy thoughts into a perfectly structured record for your PKB.
-
----
-
-## 🎭 Custom Performances (Examples)
-
-You have full control over the "script" the AI follows. In the **Settings**, you can build custom templates by defining specific prompts:
-
-### Example 1: The "Project Brief" (Work)
-*   **Note Name Prompt:** "Create a formal project ID: [PROJECT-CODE] [Subject]"
-*   **Frontmatter Prompts:**
-    *   `priority`: "High, Medium, or Low based on urgency."
-    *   `stakeholders`: "List all departments involved."
-    *   `deadline`: "Extract the final delivery date."
-*   **Body Prompt:** "Summarize into Objectives, Risks, and Next Steps."
-
-### Example 2: The "Trip Planner" (Personal)
-*   **Note Name Prompt:** "Suggest a title like '2025 - [City] Trip Planning'"
-*   **Frontmatter Prompts:**
-    *   `destination`: "Extract the city and country."
-    *   `budget`: "Estimate the total cost mentioned."
-    *   `days`: "Count how many days the trip lasts."
-*   **Body Prompt:** "Format as a bulleted itinerary with sections for 'Must-See' and 'Food'."
-
----
-
-## 🛠️ Core Capabilities
-
-### 🔍 The Loupe (Natural Overlay)
-Performer acts as a lens you slide over your note. It's a fluid overlay that feels like a natural extension of your writing process, not a separate utility.
-
-### 🧬 Metadata Synthesis
-Automatically extracts and generates Frontmatter. It identifies titles, authors, dates, and types, turning raw text into a queryable database.
-
-### 🏛️ Deep Restructuring
-Polishes note bodies into consistent, clean structures optimized for long-term storage and future retrieval.
-
----
-
-## 🚀 Getting Started
-
-### 1. Installation (via BRAT)
-As a prototype, Performer is best installed via the [Obsidian BRAT](https://github.com/TfTHacker/obsidian42-brat) plugin:
-1. Install **BRAT** from the Community Plugins.
-2. Open BRAT settings and click **"Add Beta plugin"**.
-3. Paste the URL of this repository.
-4. Enable **Performer** in your Community Plugins list.
-
-### 2. The Engine (OpenRouter)
-Performer is powered by OpenRouter, giving you the freedom to choose your preferred "performance" model:
-1. Get an API key from [openrouter.ai](https://openrouter.ai/).
-2. Open Performer Settings in Obsidian.
-3. Paste your key and select your model (e.g., Gemini 2.0, GPT-4o, or Claude 3.5).
-
----
-
-## 🏗️ The Blueprint
-Built with modern web technologies for a fluid experience:
-- **React 19** & **Vite** for high performance.
-- **Motion (framer-motion)** for natural, organic interactions.
-- **OpenRouter API** for flexible AI intelligence.
+- `docs/DEVELOPMENT.md` — templates in full, the capabilities, the stack, and how to build the plugin.
+- `LICENSE` — MIT.
